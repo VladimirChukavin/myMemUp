@@ -4,6 +4,11 @@ body {
 	background: url(../img/light_cell_big.png) fixed;
 }
 
+header h1 {
+	font-size: 3em;
+	text-align: center;
+}
+
 .iframe {
 	display: none;
 }
