@@ -9,6 +9,12 @@ header h1 {
 	text-align: center;
 }
 
+header p {
+	text-align: center;
+	padding-left: 230px;
+	padding-right: 230px;
+}
+
 .iframe {
 	display: none;
 }
