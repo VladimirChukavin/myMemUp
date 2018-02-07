@@ -1,3 +1,12 @@
+/* CSS variables */
+:root {
+	--color-base: #3e3530;
+	--block-shadow: 0 0 10px 10px rgba(0, 0, 0, .2);
+	--color-visit: #9b59b6;
+	--color-hover: #c53131;
+	--color-active: #ff3300;
+}
+
 /* font-family: "RobotoRegular"; */
 @font-face {
 	font-family: "RobotoRegular";
@@ -12,11 +21,11 @@
 body {
 	background: url(../img/light_cell_big.png) fixed;
 	font-family: "RobotoRegular";
-	color: #3e3530;
+	color: var(--color-base);
 }
 
 .wrapper {
-	width: 1230px;
+	max-width: 1230px;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
@@ -26,20 +35,25 @@ body {
 	text-align: center;
 }
 
+.hidden {
+	display: none;
+}
+
 /* Header style */
 
 .header {
 	width: inherit;
 	margin-top: 15px;
-	box-shadow: 0 0 10px 10px rgba(0, 0, 0, .2);
+	box-shadow: var(--block-shadow);
 	display: flex;
 	flex-direction: column;
 }
 
 .header__title {
-	font-size: 4em;
+	font-size: 3.5em;
 	color: #863535;
-	margin-bottom: 20px;
+	margin-bottom: 0;
+	margin-top: 10px;
 }
 
 .header__explain,
@@ -49,7 +63,7 @@ body {
 
 .header__pointer {
 	margin-top: 0;
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 }
 
 .header__link {
@@ -58,27 +72,28 @@ body {
 }
 
 .header__link:link {
-	color: #3e3530;
+	color: var(--color-base);
 }
 
 .header__link:visited {
-	color: #9b59b6;
+	color: var(--color-visit);
 }
 
 .header__link:hover {
-	color: #c53131;
+	color: var(--color-hover);
 }
 
 .header__link:active {
-	color: #ff3300;
+	color: var(--color-active);
 }
 
 /* Menu style */
 
 .menu {
 	margin-top: 30px;
+	margin-bottom: 30px;
 	padding-bottom: 15px;
-	box-shadow: 0 0 10px 10px rgba(0, 0, 0, .2);
+	box-shadow: var(--block-shadow);
 	width: 200px;;
 }
 
@@ -101,19 +116,19 @@ body {
 }
 
 .menu__link:link {
-	color: #3e3530;
+	color: var(--color-base);
 }
 
 .menu__link:visited {
-	color: #9b59b6;
+	color: var(--color-visit);
 }
 
 .menu__link:hover {
-	color: #c53131;
+	color: var(--color-hover);
 }
 
 .menu__link:active {
-	color: #ff3300;
+	color: var(--color-active);
 }
 
 /* Container style */
@@ -127,14 +142,17 @@ body {
 
 /* Main style */
 
-.main {
+.content {
+	display: flex;
+	flex-direction: column;
+	align-self: stretch;
 	width: 1000px;
-	box-shadow: 0 0 10px 10px rgba(0, 0, 0, .2);
+	box-shadow: var(--block-shadow);
 	margin-top: 30px;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 }
 
-.main div {
+.content__block {
 	margin-left: 20px;
 	margin-right: 20px;
 }
@@ -142,7 +160,7 @@ body {
 /* Footer style */
 
 .footer {
-	box-shadow: 0 0 10px 10px rgba(0, 0, 0, .2);
+	box-shadow: var(--block-shadow);
 	margin-bottom: 15px;
 	padding-left: 20px;
 }
