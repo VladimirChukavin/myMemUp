@@ -2,12 +2,71 @@
 	'use strict';
 
 	let test = document.querySelector('[data-link="practice_1"]');
+	let test2 = document.querySelector('[data-link="practice_2"]');
+	let attr = test.getAttribute('data-link');
+	let text = document.querySelector('[data-practice="practice_1"]');
+	let text2 = document.querySelector('[data-practice="practice_2"]');
+	// console.log(text.getAttribute('data-practice'));
 
-	test.addEventListener('click', function() {
-		// console.log('click');
-		let text = document.querySelector('[data-practice="practice_1"]');
+	test.addEventListener('click', () => {
+		// console.log(attr);
+		text2.classList.add('hidden');
 		text.classList.toggle('hidden');
 	});
+
+	test2.addEventListener('click', () => {
+		text.classList.add('hidden');
+		text2.classList.toggle('hidden');
+	});
+
+	let testAll = document.querySelectorAll('[data-link]');
+	// console.log([...testAll]);
+
+	// [...testAll].forEach(function (item, index) {
+	// 	item.addEventListener('click', () => {
+	// 		console.log(index, item.getAttribute('data-link'));
+	// 	});
+	// });
+
+	function hideDiv() {
+		let div = document.getElementsByClassName('content__block');
+		// console.log([...div]);
+		[...div].forEach((item, index) => {
+			item.classList.add('hidden');
+		});
+	}
+
+	hideDiv();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	let iframeList = {
 		practice_ : '<iframe class="iframe" src="http://improve-memory.net/shult/1/?iframe=1" height="888" width="502"><p>Ваш браузер не поддерживает фреймы!</p>	</iframe>',
