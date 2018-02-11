@@ -1,41 +1,20 @@
 (function() {
 	'use strict';
 
-	let test = document.querySelector('[data-link="practice_1"]');
-	let test2 = document.querySelector('[data-link="practice_2"]');
-	// let attr = test.getAttribute('data-link');
-	let text = document.querySelector('[data-practice="practice_1"]');
-	let text2 = document.querySelector('[data-practice="practice_2"]');
-	// console.log(text.getAttribute('data-practice'));
-
-	test.addEventListener('click', (e) => {
-		// text2.classList.add('hidden');
-		// console.log(e.target.getAttribute('data-link'));
-		let attr = e.target.getAttribute('data-link');
-		hideDiv(attr);
-		text.classList.toggle('hidden');
+	let linkAll = [...document.querySelectorAll('[data-link]')];
+	
+	linkAll.forEach(item => {
+		item.addEventListener('click', () => {
+			let valAttr = item.getAttribute('data-link');
+			let contBlock = document.querySelector('[data-practice="' + valAttr + '"]');
+			hideDiv(valAttr);
+			contBlock.classList.toggle('hidden');
+		});
 	});
-
-	test2.addEventListener('click', (e) => {
-		// text.classList.add('hidden');
-		let attr = e.target.getAttribute('data-link');
-		hideDiv(attr);
-		text2.classList.toggle('hidden');
-	});
-
-	let testAll = document.querySelectorAll('[data-link]');
-	// console.log([...testAll]);
-
-	// [...testAll].forEach(function (item, index) {
-	// 	item.addEventListener('click', () => {
-	// 		console.log(index, item.getAttribute('data-link'));
-	// 	});
-	// });
 
 	function hideDiv(val) {
-		let div = document.querySelectorAll('[data-practice]');
-		// console.log([...div]);
-		[...div].forEach(item => {
+		let div = [...document.querySelectorAll('[data-practice]')];
+		div.forEach(item => {
 			if (item.getAttribute('data-practice') != val) {
 				item.classList.add('hidden');
 			}
