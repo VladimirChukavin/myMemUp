@@ -28,14 +28,25 @@
 
 	hideDiv();
 
+	let fraTest = {
+		practice_3: {
+			src: 'http://improve-memory.net/shult/1/?iframe=1',
+			height: '888',
+			width: '502'
+		}
+	};
+	// console.log(fraTest.practice_3);
+	let x = Object.keys(fraTest);
+	console.log(x);
+
 	function iframeOpenHide(val) {
 		let test = document.querySelector('[data-practice="' + val + '"]');
 		// console.log(test);
 		let frame = document.createElement('iframe');
 		frame.className = 'iframe';
-		frame.src = 'http://improve-memory.net/shult/1/?iframe=1';
-		frame.height = '888';
-		frame.width = '502';
+		frame.src = fraTest.practice_3.src;
+		frame.height = fraTest.practice_3.height;
+		frame.width = fraTest.practice_3.width;
 		let p = document.createElement('p');
 		p.innerHTML = 'Ваш браузер не поддерживает фреймы!';
 		frame.appendChild(p);
@@ -61,7 +72,7 @@
 
 
 	let iframeList = {
-		practice_3 : '<iframe class="iframe" src="http://improve-memory.net/shult/1/?iframe=1" height="888" width="502"><p>Ваш браузер не поддерживает фреймы!</p>	</iframe>',
+		practice_3: '<iframe class="iframe" src="http://improve-memory.net/shult/1/?iframe=1" height="888" width="502"><p>Ваш браузер не поддерживает фреймы!</p>	</iframe>',
 		practice_ : '<iframe class="iframe" src="http://improve-memory.net/smb_pairs/1/?iframe=1" height="774" width="410"><p>Ваш браузер не поддерживает фреймы!</p></iframe>',
 		practice_ : '<iframe class="iframe" src="http://improve-memory.net/matches/1/?iframe=1" height="837" width="505"><p>Ваш браузер не поддерживает фреймы!</p></iframe>',
 		practice_ : '<iframe class="iframe" src="http://improve-memory.net/letters/1/?iframe=1" height="698" width="470"><p>Ваш браузер не поддерживает фреймы!</p></iframe>',
