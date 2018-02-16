@@ -40,18 +40,19 @@
 	// console.log(x);
 
 	function iframeOpenHide(val) {
+		let key = val;
 		let test = document.querySelector('[data-practice="' + val + '"]');
 		// console.log(test);
 		let frame = document.createElement('iframe');
 		frame.className = 'iframe';
 		for (let item in fraTest) {
-			if (item == val) {
+			if (item == key) {
 				console.log(item);
+				frame.src = fraTest[key].src;
+				frame.height = fraTest[key].height;
+				frame.width = fraTest[key].width;
 			}
 		}
-		frame.src = fraTest.practice_3.src;
-		frame.height = fraTest.practice_3.height;
-		frame.width = fraTest.practice_3.width;
 		let p = document.createElement('p');
 		p.innerHTML = 'Ваш браузер не поддерживает фреймы!';
 		frame.appendChild(p);
@@ -61,7 +62,7 @@
 		}, 10000);
 	}
 
-	// iframeOpenHide('practice_3');
+	iframeOpenHide('practice_3');
 
 
 
