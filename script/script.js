@@ -1,84 +1,8 @@
 (function() {
 	'use strict';
 
-	let linkAll = [...document.querySelectorAll('[data-link]')];
-	
-	linkAll.forEach(item => {
-		item.addEventListener('click', () => {
-			let valAttr = item.getAttribute('data-link');
-			let contBlock = document.querySelector('[data-practice="' + valAttr + '"]');
-			hideDiv(valAttr);
-			contBlock.classList.toggle('hidden');
-		});
-	});
-
-	/**
-	 * Назначает всем div, чей атрибут data-practice не равен val, класс hidden
-	 * @param  {string} val Значение атрибута data-link
-	 * @return {object}
-	 */
-	function hideDiv(val) {
-		let divContent = [...document.querySelectorAll('[data-practice]')];
-		divContent.forEach(item => {
-			if (item.getAttribute('data-practice') != val) {
-				item.classList.add('hidden');
-			}
-		});
-	}
-
-	hideDiv();
-
-	let fraTest = {
-		practice_3: {
-			src: 'http://improve-memory.net/shult/1/?iframe=1',
-			height: '888',
-			width: '502'
-		}
-	};
-	// console.log(fraTest.practice_3);
-	// let x = Object.keys(fraTest);
-	// console.log(x);
-
-	function iframeOpenHide(val) {
-		let key = val;
-		let test = document.querySelector('[data-practice="' + val + '"]');
-		// console.log(test);
-		let frame = document.createElement('iframe');
-		frame.className = 'iframe';
-		for (let item in fraTest) {
-			if (item == key) {
-				console.log(item);
-				frame.src = fraTest[key].src;
-				frame.height = fraTest[key].height;
-				frame.width = fraTest[key].width;
-			}
-		}
-		let p = document.createElement('p');
-		p.innerHTML = 'Ваш браузер не поддерживает фреймы!';
-		frame.appendChild(p);
-		test.appendChild(frame);
-		setTimeout(() => {
-			test.removeChild(frame);
-		}, 10000);
-	}
-
-	iframeOpenHide('practice_3');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	let iframeList = {
-		practice_3: {
+		iframe_3: {
 			src: 'http://improve-memory.net/shult/1/?iframe=1',
 			height: '888',
 			width: '502'
@@ -509,5 +433,64 @@
 			width: '775'
 		}
 	};
+
+	let linkAll = [...document.querySelectorAll('[data-link]')];
+	
+	linkAll.forEach(item => {
+		item.addEventListener('click', () => {
+			let valAttr = item.getAttribute('data-link');
+			let contBlock = document.querySelector('[data-practice="' + valAttr + '"]');
+			hideDiv(valAttr);
+			contBlock.classList.toggle('hidden');
+			let test = contBlock.classList.contains('hidden');
+			if (valAttr.indexOf('iframe') != -1) {
+				if (!test) {
+					iframeOpen(valAttr, contBlock);
+				} else {
+					iframeHide(test);
+				}
+			} else {
+				iframeHide(!test);
+			}
+		});
+	});
+
+	/**
+	 * Назначает всем div, чей атрибут data-practice не равен val, класс hidden
+	 * @param  {string} val Значение атрибута data-link
+	 * @return {object}
+	 */
+	function hideDiv(val) {
+		let divContent = [...document.querySelectorAll('[data-practice]')];
+		divContent.forEach(item => {
+			if (item.getAttribute('data-practice') != val) {
+				item.classList.add('hidden');
+			}
+		});
+	}
+
+	hideDiv();
+
+	function iframeOpen(val, block) {
+		let frame = document.createElement('iframe');
+		frame.className = 'iframe';
+		for (let item in iframeList) {
+			if (item == val) {
+				frame.src = iframeList[val].src;
+				frame.height = iframeList[val].height;
+				frame.width = iframeList[val].width;
+			}
+		}
+		let p = document.createElement('p');
+		p.innerHTML = 'Ваш браузер не поддерживает фреймы!';
+		frame.appendChild(p);
+		block.appendChild(frame);
+	}
+
+	function iframeHide(out) {
+		let frame = document.querySelector('iframe');
+		let blk = frame.parentElement;
+		if (out) blk.removeChild(frame);
+	}
 	
 })();
