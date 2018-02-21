@@ -503,8 +503,10 @@
 	 */
 	function iframeHide(out) {
 		let frame = document.querySelector('iframe');
-		let blk = frame.parentElement;
-		if (out) blk.removeChild(frame);
+		if (frame) {
+			let blk = frame.parentElement;
+			if (out) blk.removeChild(frame);
+		}
 	}
 	
 })();
