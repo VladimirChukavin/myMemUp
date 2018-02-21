@@ -176,6 +176,13 @@ body {
 	margin-right: 20px;
 }
 
+.content__task {
+	padding-left: 15px;
+	padding-right: 15px;
+	text-align: justify;
+	text-indent: 10px;
+}
+
 /* Footer style */
 .footer {
 	box-shadow: var(--block-shadow);
