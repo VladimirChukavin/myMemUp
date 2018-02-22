@@ -169,6 +169,7 @@ body {
 	box-shadow: var(--block-shadow);
 	margin-top: 30px;
 	margin-bottom: 30px;
+	padding-bottom: 15px;
 }
 
 .content__block {
