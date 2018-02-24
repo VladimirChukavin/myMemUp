@@ -184,6 +184,10 @@ body {
 	text-indent: 10px;
 }
 
+.content__list {
+	list-style: none;
+}
+
 /* Footer style */
 .footer {
 	box-shadow: var(--block-shadow);
