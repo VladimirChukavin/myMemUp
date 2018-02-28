@@ -117,6 +117,7 @@ body {
 }
 
 .menu__item {
+	position: relative;
 	border: 1px solid var(--border-color);
 	width: 24px;
 	height: 22px;
@@ -124,6 +125,18 @@ body {
 	text-align: center;
 	margin-bottom: 2px;
 	font-size: 0.8em;
+}
+
+/* Tooltip */
+.menu__item:hover::before {
+	position: absolute;
+	content: attr(data-info);
+	min-width: 200px;
+	background-color: #fffffc;
+	border: 1px solid var(--border-color);
+	border-radius: 5px;
+	transform: translate(-10%);
+	bottom: calc(100% + 5px);
 }
 
 .menu__link {
