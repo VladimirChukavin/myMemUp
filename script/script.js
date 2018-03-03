@@ -350,6 +350,8 @@
 
 	let linkAll = [...document.querySelectorAll('[data-link]')];
 	
+	hideDiv();
+
 	/**
 	 * Обработчик клика, по нажатию открывает или скрывает блоки контента
 	 */
@@ -357,18 +359,20 @@
 		item.addEventListener('click', () => {
 			let valAttr = item.getAttribute('data-link');
 			let contBlock = document.querySelector('[data-practice="' + valAttr + '"]');
-			hideDiv(valAttr);
 			contBlock.classList.toggle('hidden');
 			let flag = contBlock.classList.contains('hidden');
+			
+			hideDiv(valAttr);
+
 			if (valAttr.indexOf('iframe') != -1) {
 				if (!flag) {
-					iframeHide(!flag);
-					iframeOpen(valAttr, contBlock);
+					hideIframe(!flag);
+					openIframe(valAttr, contBlock);
 				} else {
-					iframeHide(flag);
+					hideIframe(flag);
 				}
 			} else {
-				iframeHide(!flag);
+				hideIframe(!flag);
 			}
 		});
 	});
@@ -380,6 +384,7 @@
 	 */
 	function hideDiv(val) {
 		let divContent = [...document.querySelectorAll('[data-practice]')];
+
 		divContent.forEach(item => {
 			if (item.getAttribute('data-practice') != val) {
 				item.classList.add('hidden');
@@ -387,17 +392,19 @@
 		});
 	}
 
-	hideDiv();
-
 	/**
 	 * Открывает iframe
 	 * @param  {string} val   значение атрибута data-link
 	 * @param  {string} block значение переменной contBlock
 	 * @return {object}
 	 */
-	function iframeOpen(val, block) {
+	function openIframe(val, block) {
 		let frame = document.createElement('iframe');
+		let p = document.createElement('p');
+		
 		frame.className = 'iframe';
+		p.innerHTML = 'Ваш браузер не поддерживает фреймы!';
+
 		for (let item in iframeList) {
 			if (item == val) {
 				frame.src = iframeList[val].src;
@@ -405,8 +412,7 @@
 				frame.height = iframeList[val].height;
 			}
 		}
-		let p = document.createElement('p');
-		p.innerHTML = 'Ваш браузер не поддерживает фреймы!';
+		
 		frame.appendChild(p);
 		block.appendChild(frame);
 	}
@@ -416,11 +422,12 @@
 	 * @param  {string} out значение переменной flag
 	 * @return {object}
 	 */
-	function iframeHide(out) {
+	function hideIframe(out) {
 		let frame = document.querySelector('iframe');
+		
 		if (frame) {
-			let blk = frame.parentElement;
-			if (out) blk.removeChild(frame);
+			let prntElem = frame.parentElement;
+			if (out) prntElem.removeChild(frame);
 		}
 	}
 })();
