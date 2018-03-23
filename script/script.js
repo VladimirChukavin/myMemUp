@@ -378,7 +378,8 @@
 	});
 
 	/**
-	 * Назначает всем div, чей атрибут data-practice не равен val, класс hidden
+	 * Назначает всем div, чей атрибут data-practice не равен val, класс hidden,
+	 * то есть скрывает все div
 	 * @param  {string} val Значение атрибута data-link
 	 * @return {object}
 	 */
@@ -408,7 +409,7 @@
 		for (let item in iframeList) {
 			if (item == val) {
 				frame.src = iframeList[val].src;
-				frame.width = '900';
+				frame.width = '700';
 				frame.height = iframeList[val].height;
 			}
 		}
